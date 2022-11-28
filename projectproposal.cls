@@ -79,7 +79,7 @@
 		\tl_set:Nn \projectproposal_project_type_localization_tl {Projektart}
 		\tl_set:Nn \projectproposal_supervisor_localization_tl {Betreuer}
 		\tl_set:Nn \projectproposal_examiner_localization_tl {Prüfer}
-		\tl_set:Nn \projectproposal_logo_path_tl {images/logo_unistuttgart_deutsch_weiss.eps}
+		\tl_set:Nn \projectproposal_logo_path_tl {images/institute_logo_white_de.eps}
 		\tl_set:Nn \projectproposal_logo_subtitle_tl {Institut~für~Theoretische~Chemie}
 		\fp_set:Nn \projectproposal_logo_subtitle_x_factor_fp {0.25}
 		\fp_set:Nn \projectproposal_logo_subtitle_y_factor_fp {-0.85}
@@ -88,18 +88,13 @@
 		\tl_set:Nn \projectproposal_project_type_localization_tl {Project~type}
 		\tl_set:Nn \projectproposal_supervisor_localization_tl {Supervisor}
 		\tl_set:Nn \projectproposal_examiner_localization_tl {Examiner}
-		\tl_set:Nn \projectproposal_logo_path_tl {images/logo_university_stuttgart_white.eps}
+		\tl_set:Nn \projectproposal_logo_path_tl {images/institute_logo_white_en.eps}
 		\tl_set:Nn \projectproposal_logo_subtitle_tl {Institute~for~Theoretical~Chemistry}
 		\fp_set:Nn \projectproposal_logo_subtitle_x_factor_fp {0.24}
 		\fp_set:Nn \projectproposal_logo_subtitle_y_factor_fp {-1.2}
 	}
 
 	\renewcommand*{\maketitle}{
-		\newsavebox\projectproposal_logo_box
-		\newlength\projectproposal_logo_height
-		\newlength\projectproposal_logo_width
-		\newlength\projectproposal_logo_subtitle_font_size
-
 		\begin{tikzpicture}[remember~picture, overlay]
 			\def\titleBubbleRadius{0.5\paperwidth}
 			\def\titleBubbleOffsetX{0.2\paperwidth}
@@ -127,18 +122,8 @@
 				\end{flushleft}
 			};
 
-			\savebox\projectproposal_logo_box{\includegraphics[width=.35\paperwidth]\projectproposal_logo_path_tl}
-			\settoheight\projectproposal_logo_height{\usebox\projectproposal_logo_box}
-			\settowidth\projectproposal_logo_width{\usebox\projectproposal_logo_box}
-			\setlength\projectproposal_logo_subtitle_font_size{0.25\projectproposal_logo_height}
-
 			\fill[mittelblau] (logoBubbleCenter) circle[radius=\logoBubbleRadius];
-			\path (logoCenter) node[outer~sep=0pt, inner~sep=0pt] (logo) {\usebox\projectproposal_logo_box};
-
-			% Add logo subtitle
-			\path (logo.north~west) ++({\fp_use:N \projectproposal_logo_subtitle_x_factor_fp*\projectproposal_logo_width},
-				{\fp_use:N \projectproposal_logo_subtitle_y_factor_fp*\projectproposal_logo_height})
-				node[right, white] {\fontsize{\projectproposal_logo_subtitle_font_size}{0pt}\selectfont\textsf{\projectproposal_logo_subtitle_tl}};
+			\path (logoCenter) node[outer~sep=0pt, inner~sep=0pt] (logo) {\includegraphics[width=.35\paperwidth]\projectproposal_logo_path_tl};
 		\end{tikzpicture}
 
 		\vspace{.2\paperwidth}
